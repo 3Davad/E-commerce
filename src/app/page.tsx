@@ -1,6 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [cart] = useState([]);
+
   return (
     <div className="App">
       <nav className="nav bg-slate-700 w-100% p-5 flex items-center justify-between">
@@ -18,7 +22,7 @@ export default function Home() {
         <section className="search flex w-64 p-2">
           <div className="select relative">
             <select
-              className="search-select  w-50 appearance-none p-2 rounded-xl bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="search-select  w-40 appearance-none p-2 text-[12px] bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               name="category"
               id="category"
             >
@@ -34,12 +38,38 @@ export default function Home() {
           <input
             type="text"
             placeholder="Search"
-            className="search-input"
+            className="search-input w-250 md:w-300"
           ></input>
-          <button className="search-button">Search</button>
+          <button className="search-button bg-gray-500 p-1 hover:opacity-80 rounded-md box-border">
+            <svg
+              className={
+                "search-icon w-[20px] h-[20px] md:w-[35px] md:h-[35px] text-white"
+              }
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              role="img"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
         </section>
-        <section className="cart">
-          <p className="font-bold">carrito</p>
+        <section className="cart flex gap-3 items-center">
+          <svg
+            className="icon w-[30px] h-[30px] md:w-[50px] md:h-[50px] text-white"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="16.5" cy="18.5" r="1.5" />
+            <circle cx="9.5" cy="18.5" r="1.5" />
+            <path d="M18 16H8a1 1 0 0 1-.958-.713L4.256 6H3a1 1 0 0 1 0-2h2a1 1 0 0 1 .958.713L6.344 6H21a1 1 0 0 1 .937 1.352l-3 8A1 1 0 0 1 18 16zm-9.256-2h8.563l2.25-6H6.944z" />
+          </svg>
+          <p className="font-bold">carrito ({cart.length})</p>
         </section>
       </nav>
     </div>
